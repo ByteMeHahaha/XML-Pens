@@ -1,0 +1,24 @@
+project-meta:
+  project-name: XML Pens
+  date-started: 2026-06-09
+  last-updated: 2026-06-09
+  languages:
+    - XML
+    - XSD
+    - XSLT
+  status: Experimental
+  license: MIT
+  version: 0.0.1
+
+build:
+  dev-environments:
+    - WSL2 (Ubuntu)
+  no-build: true
+
+team:
+  author: Ethan Kletschke
+
+  contributors:
+    - name: Ethan Kletschke
+      role: Author and Owner
+      github-username: ByteMeHahaha
