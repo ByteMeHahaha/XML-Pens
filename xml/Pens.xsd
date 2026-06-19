@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- Root Element definition -->
   <xs:element name="pens">
-    <!-- TODO => Write schema -->
+    <xs:complexType>
+      <xs:sequence>
+        <!-- Record element -->
+        <xs:element name="pen" type="pen-type" minOccurs="1" maxOccurs="unbounded" />
+      </xs:sequence>
+    </xs:complexType>
   </xs:element>
+
+  <!-- Pen record type -->
+  <xs:complexType name="pen-type">
+    <xs:sequence>
+      <xs:element name="brand" type="xs:string" />
+      <xs:element name="model" type="xs:string" />
+      <xs:element name="price">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:double">
+              <xs:attribute
+                name="currency"
+                type="currency-type"
+                use="optional"
+                default="ZAR" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+
+    <xs:attribute name="pen-id" type="xs:ID" />
+  </xs:complexType>
+
+  <xs:simpleType name="currency-type">
+    <xs:restriction base="xs:string">
+      <!-- Currency Abbreviation, e.g., USD -->
+      <xs:pattern value="[A-Z]{3}" />
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>
