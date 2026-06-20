@@ -2,5 +2,14 @@
 <?xml-model href="Pens.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <!DOCTYPE pens>
 <pens>
-  <!-- TODO => Add data -->
+  <pen pen-id="pn1">
+    <brand>Parker</brand>
+    <model>Jotter</model>
+    <type>Ballpoint</type>
+  </pen>
+  <pen pen-id="pn2">
+    <brand>Parker</brand>
+    <model>51 Modern</model>
+    <type>Fountain</type>
+  </pen>
 </pens>

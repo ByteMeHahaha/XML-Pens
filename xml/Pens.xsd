@@ -2,11 +2,14 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <!-- Root Element definition -->
   <xs:element name="pens">
+    <!-- Documentation -->
     <xs:annotation>
       <xs:documentation>
         The root element of the document containing multiple pen records.
       </xs:documentation>
     </xs:annotation>
+
+    <!-- Type Definition -->
     <xs:complexType>
       <xs:sequence>
         <!-- Record element -->
@@ -24,8 +27,19 @@
   <!-- Pen record type -->
   <xs:complexType name="pen-type">
     <xs:sequence>
-      <xs:element name="brand" type="xs:string" />
+      <!-- Pen Brand -->
+      <xs:element name="brand" type="xs:string">
+        <!-- Documentation -->
+        <xs:annotation>
+          <xs:documentation>
+            The brand that made the pen, such as Parker, Pentel, Pilot,
+            Pelikan, Montblanc, etc.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <!-- Pen Model -->
       <xs:element name="model" type="xs:string">
+        <!-- Documentation -->
         <xs:annotation>
           <xs:documentation>
             The pen's specific model.
@@ -37,11 +51,14 @@
 
       <!-- Type of Pen -->
       <xs:element name="type">
+        <!-- Documentation -->
         <xs:annotation>
           <xs:documentation>
             The type of pen, such as fountain pen, rollerball, ballpoint, etc.
           </xs:documentation>
         </xs:annotation>
+
+        <!-- Type Definition -->
         <xs:simpleType>
           <xs:restriction base="xs:string">
             <xs:enumeration value="Fountain" />
