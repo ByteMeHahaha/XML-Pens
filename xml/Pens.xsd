@@ -14,23 +14,49 @@
   <xs:complexType name="pen-type">
     <xs:sequence>
       <xs:element name="brand" type="xs:string" />
-      <xs:element name="model" type="xs:string" />
-      <xs:element name="price">
+      <xs:element name="model" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>The pen's specific model. For example, with the Parker Jotter, "Jotter"
+            is the model.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+
+      <!-- Pen recommended price -->
+      <xs:element name="price" minOccurs="0">
+        <!-- Documentation -->
+        <xs:annotation>
+          <xs:documentation>The price for the pen. This may either be the manufacturer's
+            recommended price or the price found online. If the price was found online, the "src"
+            attribute must be present.</xs:documentation>
+        </xs:annotation>
+
+        <!-- Type Definition -->
         <xs:complexType>
           <xs:simpleContent>
             <xs:extension base="xs:double">
+              <!-- Currency for price -->
               <xs:attribute
                 name="currency"
                 type="currency-type"
                 use="optional"
-                default="ZAR" />
+                default="ZAR">
+                <xs:annotation>
+                  <xs:documentation>The abbreviation for the currency used for the price.</xs:documentation>
+                </xs:annotation>
+              </xs:attribute>
             </xs:extension>
           </xs:simpleContent>
         </xs:complexType>
       </xs:element>
     </xs:sequence>
 
-    <xs:attribute name="pen-id" type="xs:ID" />
+    <xs:attribute name="pen-id" type="xs:ID">
+      <xs:annotation>
+        <xs:documentation>
+          The unique identifier for the pen. Cannot start with a number.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <xs:simpleType name="currency-type">
