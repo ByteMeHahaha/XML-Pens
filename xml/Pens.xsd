@@ -2,10 +2,21 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <!-- Root Element definition -->
   <xs:element name="pens">
+    <xs:annotation>
+      <xs:documentation>
+        The root element of the document containing multiple pen records.
+      </xs:documentation>
+    </xs:annotation>
     <xs:complexType>
       <xs:sequence>
         <!-- Record element -->
-        <xs:element name="pen" type="pen-type" minOccurs="1" maxOccurs="unbounded" />
+        <xs:element name="pen" type="pen-type" minOccurs="1" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              A single pen record containing data for one pen.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -16,18 +27,39 @@
       <xs:element name="brand" type="xs:string" />
       <xs:element name="model" type="xs:string">
         <xs:annotation>
-          <xs:documentation>The pen's specific model. For example, with the Parker Jotter, "Jotter"
-            is the model.</xs:documentation>
+          <xs:documentation>
+            The pen's specific model.
+            For example, with the Parker Jotter, "Jotter"
+            is the model.
+          </xs:documentation>
         </xs:annotation>
+      </xs:element>
+
+      <!-- Type of Pen -->
+      <xs:element name="type">
+        <xs:annotation>
+          <xs:documentation>
+            The type of pen, such as fountain pen, rollerball, ballpoint, etc.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Fountain" />
+            <xs:enumeration value="Ballpoint" />
+            <xs:enumeration value="Rollerball" />
+            <xs:enumeration value="Other" />
+          </xs:restriction>
+        </xs:simpleType>
       </xs:element>
 
       <!-- Pen recommended price -->
       <xs:element name="price" minOccurs="0">
         <!-- Documentation -->
         <xs:annotation>
-          <xs:documentation>The price for the pen. This may either be the manufacturer's
-            recommended price or the price found online. If the price was found online, the "src"
-            attribute must be present.</xs:documentation>
+          <xs:documentation>
+            The price for the pen. This may either be the manufacturer's
+            recommended price or the price found online.
+          </xs:documentation>
         </xs:annotation>
 
         <!-- Type Definition -->
@@ -41,7 +73,10 @@
                 use="optional"
                 default="ZAR">
                 <xs:annotation>
-                  <xs:documentation>The abbreviation for the currency used for the price.</xs:documentation>
+                  <xs:documentation>
+                    The abbreviation for the currency used for the price.
+                    Defaults to ZAR (South African Rand).
+                  </xs:documentation>
                 </xs:annotation>
               </xs:attribute>
             </xs:extension>
@@ -53,7 +88,8 @@
     <xs:attribute name="pen-id" type="xs:ID">
       <xs:annotation>
         <xs:documentation>
-          The unique identifier for the pen. Cannot start with a number.
+          The unique identifier for the pen. Cannot start with a number and must be
+          unique within a document.
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
